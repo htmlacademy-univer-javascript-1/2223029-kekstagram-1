@@ -54,7 +54,7 @@ function createObject() {
     url: `photos/${getIdPhotos()}.jpg`,
     description: 'Описание фотографии',
     likes: getRandomPositiveInteger (15, 200),
-    comments: Array.from({length: getRandomPositiveInteger (1, 2)}, createComments),
+    comments: Array.from({length: getRandomPositiveInteger(1, 2)}, createComments),
   };
 }
 
