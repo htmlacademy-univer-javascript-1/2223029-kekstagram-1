@@ -36,7 +36,6 @@ const MESSAGES = [
 ];
 
 const OBJECT_COUNT = 25;
-const COMMENTS_AMOUNT = 2;
 
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
@@ -55,8 +54,10 @@ function createObject() {
     url: `photos/${getIdPhotos()}.jpg`,
     description: 'Описание фотографии',
     likes: getRandomPositiveInteger (15, 200),
-    comments: Array.from({length: COMMENTS_AMOUNT}, createComments),
+    comments: Array.from({length: getRandomPositiveInteger (1, 2)}, createComments),
   };
 }
 
 const arrayOfObjects = Array.from({length: OBJECT_COUNT}, createObject);
+
+console.log(arrayOfObjects);
