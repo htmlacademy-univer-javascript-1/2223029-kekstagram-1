@@ -42,12 +42,12 @@ const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0,
 
 function createComments() {
   return {
-  id: getIdComments(),
-  avatar: `img/avatar-${getRandomPositiveInteger(1,6)}.svg`,
-  message: getRandomArrayElement(MESSAGES),
-  name: getRandomArrayElement(NAMES),
-  }
-};
+    id: getIdComments(),
+    avatar: `img/avatar-${getRandomPositiveInteger(1,6)}.svg`,
+    message: getRandomArrayElement(MESSAGES),
+    name: getRandomArrayElement(NAMES),
+  };
+}
 
 function createObject() {
   return {
@@ -57,8 +57,6 @@ function createObject() {
     likes: getRandomPositiveInteger (15, 200),
     comments: Array.from({length: COMMENTS_AMOUNT}, createComments),
   };
-};
+}
 
 const arrayOfObjects = Array.from({length: OBJECT_COUNT}, createObject);
-
-console.log(arrayOfObjects);
