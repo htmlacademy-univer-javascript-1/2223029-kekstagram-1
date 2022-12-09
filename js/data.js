@@ -26,6 +26,18 @@ const MESSAGES = [
   'Лица у людей на фотке перекошены, как будто их избивают.', 'Как можно было поймать такой неудачный момент?!'
 ];
 
+const DESCRIPTIONS = [
+  'Жизнь похожа на фотокамеру: вам просто нужно смотреть на нее с улыбкой',
+  'Живите во всех тех моментах, которые вы не можете выразить словами',
+  'Любите меня, от этого я буду сиять еще ярче',
+  'Если у вас есть глаза, взгляните на меня сейчас!',
+  'Лучшее еще впереди',
+  'Я — это мы',
+  'Всегда будьте лучшим вариантом для себя',
+  'Мир начинается с улыбки',
+  'Я просто прямой потомок грандиозности',
+];
+
 const OBJECT_COUNT = 25;
 
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
@@ -43,7 +55,7 @@ function createObject() {
   return {
     id: getIdObject(),
     url: `photos/${getIdPhotos()}.jpg`,
-    description: 'Описание фотографии',
+    description: getRandomArrayElement(DESCRIPTIONS),
     likes: getRandomPositiveInteger (15, 200),
     comments: Array.from({length: getRandomPositiveInteger(1, 2)}, createComments),
   };
