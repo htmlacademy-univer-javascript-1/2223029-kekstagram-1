@@ -1,4 +1,4 @@
-import {createBigPictures} from './fullSizeImage.js';
+import { createBigPictures } from './big-photo.js';
 
 const picturesContainer = document.querySelector('.pictures');
 const templateFragment = document.querySelector('#picture').content.querySelector('.picture');
@@ -6,6 +6,7 @@ const templateFragment = document.querySelector('#picture').content.querySelecto
 const fragment = document.createDocumentFragment();
 
 const createMiniatures = (descriptions) => {
+  document.querySelectorAll('.picture').forEach((picture) => picture.remove());
   descriptions.forEach((description) => {
     const photo = templateFragment.cloneNode(true);
 
@@ -14,9 +15,8 @@ const createMiniatures = (descriptions) => {
     photo.querySelector('.picture__comments').textContent = description.comments.length;
     fragment.appendChild(photo);
   });
-
   picturesContainer.appendChild(fragment);
   createBigPictures(descriptions);
 };
 
-export {createMiniatures};
+export { createMiniatures };
