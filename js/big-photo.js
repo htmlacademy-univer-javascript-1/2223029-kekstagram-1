@@ -5,7 +5,7 @@ const comment = bigPicture.querySelector('.social__comments');
 const shownCommentsCountSection = document.querySelector('.comments-shown-count');
 
 let commentsDataCopy = [];
-let shownCommentsCount = 0;
+let shownCommentsCount;
 
 const closeBigPicture = (evt) => {
   if (evt.key === 'Escape' || evt.type === 'click' && evt.target.closest('.big-picture__cancel')) {
@@ -16,9 +16,6 @@ const closeBigPicture = (evt) => {
     cancelButton.removeEventListener('click', closeBigPicture);
   }
 };
-
-document.addEventListener('keydown', closeBigPicture);
-cancelButton.addEventListener('click', closeBigPicture);
 
 const fillingСomments = function (comments, commentTemplate) {
   comments.forEach((i) => {
@@ -48,6 +45,9 @@ const showMoreComments = function () {
 
 const displayBigPicture = (picture, photoData) => {
   picture.addEventListener('click', () => {
+    document.addEventListener('keydown', closeBigPicture);
+    cancelButton.addEventListener('click', closeBigPicture);
+
     bigPicture.classList.remove('hidden');
     const img = bigPicture.querySelector('.big-picture__img').querySelector('img');
     const likes = bigPicture.querySelector('.big-picture__social').querySelector('.likes-count');
