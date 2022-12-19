@@ -17,18 +17,14 @@ fileInput.addEventListener('change', () => {
   }
 });
 
-file.addEventListener('change', () => {
-  document.querySelector('.img-upload__overlay').classList.remove('hidden');
-  document.querySelector('body').classList.add('modal-open');
-  effectsButton.addEventListener('click', changeFilter);
-});
-
 const closeModal = (evt) => {
-  if (evt.key === 'Escape' || evt.type === 'click' && evt.target.closest('#upload-cancel')) {
+  if (!evt || evt.key === 'Escape' || evt.type === 'click' && evt.target.closest('#upload-cancel')) {
     cancelFilter();
     resetSize();
-    document.querySelector('.text__hashtags').textContent = '';
-    document.querySelector('.text__description').textContent = '';
+    file.value = null;
+    document.querySelector('.text__hashtags').value = '';
+    document.querySelector('.text__description').value = '';
+    photoPreview.src = 'img/upload-default-image.jpg';
     document.querySelector('.img-upload__overlay').classList.add('hidden');
     document.querySelector('body').classList.remove('modal-open');
     document.removeEventListener('keydown', closeModal);
@@ -36,7 +32,12 @@ const closeModal = (evt) => {
   }
 };
 
-document.addEventListener('keydown', closeModal);
-cancelButton.addEventListener('click', closeModal);
+file.addEventListener('change', () => {
+  document.addEventListener('keydown', closeModal);
+  cancelButton.addEventListener('click', closeModal);
+  document.querySelector('.img-upload__overlay').classList.remove('hidden');
+  document.querySelector('body').classList.add('modal-open');
+  effectsButton.addEventListener('click', changeFilter);
+});
 
 export { closeModal };
