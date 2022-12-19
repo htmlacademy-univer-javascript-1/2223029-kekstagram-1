@@ -1,25 +1,22 @@
-import {arrayOfObjects} from './data.js';
+import {createBigPictures} from './fullSizeImage.js';
 
-const picturesContainerElement = document.querySelector('.pictures');
+const picturesContainer = document.querySelector('.pictures');
 const templateFragment = document.querySelector('#picture').content.querySelector('.picture');
 
 const fragment = document.createDocumentFragment();
-const descriptions = arrayOfObjects();
 
-const createMiniatures = () => {
+const createMiniatures = (descriptions) => {
   descriptions.forEach((description) => {
     const photo = templateFragment.cloneNode(true);
 
     photo.querySelector('.picture__img').src = description.url;
     photo.querySelector('.picture__likes').textContent = description.likes;
     photo.querySelector('.picture__comments').textContent = description.comments.length;
-
     fragment.appendChild(photo);
   });
 
-  picturesContainerElement.appendChild(fragment);
+  picturesContainer.appendChild(fragment);
+  createBigPictures(descriptions);
 };
 
-createMiniatures();
-
-export {descriptions};
+export {createMiniatures};

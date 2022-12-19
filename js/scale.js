@@ -6,7 +6,6 @@ const imageUploadPreview = document.querySelector('.img-upload__preview img');
 
 const makePhotoSmaller = function () {
   const value = Number(scaleValue.value.replace('%', ''));
-
   if (value > 25) {
     const newValue = value - 25;
     imageUploadPreview.style.transform = `scale(${newValue / 100})`;
@@ -27,5 +26,12 @@ const makePhotoBigger = function () {
   }
 };
 
+const resetSize = function () {
+  imageUploadPreview.style.transform = 'scale(1)';
+  scaleValue.value = '100%';
+};
+
 smallerButton.addEventListener('click', makePhotoSmaller);
 biggerButton.addEventListener('click', makePhotoBigger);
+
+export {resetSize};
