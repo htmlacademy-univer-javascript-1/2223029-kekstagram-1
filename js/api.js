@@ -5,7 +5,6 @@ const getData = (onSuccess) => {
       onSuccess(photos);
     });
 };
-
 const sendData = (onSuccess, onFail, body) => {
   fetch('https://26.javascript.pages.academy/kekstagram',
     {
@@ -23,4 +22,4 @@ const sendData = (onSuccess, onFail, body) => {
     });
 };
 
-export {getData, sendData};
+export { getData, sendData };
