@@ -97,6 +97,8 @@ const cancelFilter = () => {
   destroySlider();
   previewPhoto.style.filter = '';
   effectLevelValue.value = '';
+  effectsButton.querySelectorAll('.effects__radio').forEach((effect) => {effect.checked = false;});
+  effectsButton.querySelector('#effect-none').checked = true;
 };
 
 export { changeFilter, cancelFilter };
