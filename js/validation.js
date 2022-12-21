@@ -65,7 +65,9 @@ const submitForm = (onSuccess, onError) => {
     evt.preventDefault();
     const isValid = pristine.validate();
     if (isValid) {
-      sendData(onSuccess, onError, new FormData(form));
+      uploadButton.disabled = true;
+      sendData(() => { uploadButton.disabled = false; onSuccess();},
+        () => { uploadButton.disabled = false; onError();}, new FormData(form));
     }
   });
 };
